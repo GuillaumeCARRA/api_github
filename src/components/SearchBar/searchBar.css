@@ -1,0 +1,22 @@
+.github__logo {
+    width: 20%;
+    display: block;
+    margin: 0 auto;   
+}
+
+.input__container {
+    background-color: white;
+    margin: 25px 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+.input__searchrepo {
+    width: 96.5%;
+    margin: 5px 1px;
+    padding: 9px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    outline-style: none;
+}

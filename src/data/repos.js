@@ -1,4 +1,4 @@
-export default {
+const gitRepos = {
     "total_count": 586701,
     "incomplete_results": false,
     "items": [
@@ -2974,3 +2974,5 @@ export default {
       }
     ]
   };
+
+export default gitRepos;

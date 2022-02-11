@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+
+import './numberRepos.css';
 
 
-function NumberRepos() {
+function NumberRepos({totalRepos}) {
     return (
-        <div>
-            test
+        <div className="result">
+            <p className="result__repos">La recherche a donné {totalRepos} résultats</p>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import SearchBar from '../src/components/SearchBar';
 import NumberRepos from '../src/components/NumberRepos';
 import ShowRepos from '../src/components/ShowRepos'; 
 
-import repos from '../src/data/repos'; 
+import gitRepos from '../src/data/repos'; 
 
 import './App.css';
 
@@ -27,8 +27,8 @@ function App() {
         setSearchRepo={setSearch}
         submit={handleSubmit}
       />
-      <NumberRepos />
-      <ShowRepos />
+      <NumberRepos totalRepos={gitRepos.total_count} />
+      <ShowRepos allRepos={gitRepos.items} />
     </div>
   );
 }

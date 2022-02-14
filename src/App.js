@@ -1,34 +1,41 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 import SearchBar from '../src/components/SearchBar';
 import NumberRepos from '../src/components/NumberRepos';
 import ShowRepos from '../src/components/ShowRepos'; 
 
-import gitRepos from '../src/data/repos'; 
+// import gitRepos from '../src/data/repos'; 
 
 import './App.css';
 
 function App() {
 
-  /* INPUT FIELD VALUE */
-  const [search, setSearch] = useState('');
-  console.log('recherche repo', search);
 
   /* ALL THE REPOS */
   const [repos, setRepos] = useState([]);
 
-  const handleSubmit = () => {
-    setSearch("");
+  /* NUMBER TOTAL OF REPOS */
+  const [totalRepositories, setTotalRepositories] = useState('');
+
+   const handleSubmit = (searchTheRepo) => {
+    axios.get(`https://api.github.com/search/repositories?q=${searchTheRepo}`)
+      .then((response) => {
+        setRepos(response.data.items);
+        setTotalRepositories(response.data.total_count);
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
   }
+  
 
   return (
     <div className="App">
       <SearchBar 
-        searchRepo={search}
-        setSearchRepo={setSearch}
         submit={handleSubmit}
       />
-      <NumberRepos totalRepos={gitRepos.total_count} />
-      <ShowRepos allRepos={gitRepos.items} />
+      <NumberRepos totalRepos={totalRepositories} />
+      <ShowRepos allRepos={repos} />
     </div>
   );
 }

@@ -14,7 +14,6 @@ function ShowRepos({allRepos}) {
           >
         <Card.Group centered itemsPerRow={4} >
             {allRepos.map((repo) => (
-                
                 <Card 
                     className="card"
                     key={repo.id}

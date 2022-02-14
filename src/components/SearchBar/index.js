@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logoGithub from '../../../src/assets/images/logo-github.png';
 
 import './searchBar.css'; 
 
-function SearchBar({submit, searchRepo, setSearchRepo}) {
+function SearchBar({submit}) {
+
+
+  /* INPUT FIELD VALUE */
+  const [search, setSearch] = useState('');
+  console.log('recherche repo', search);
 
 
     return (
@@ -13,17 +18,17 @@ function SearchBar({submit, searchRepo, setSearchRepo}) {
                 <form 
                     onSubmit={(event) => {
                         event.preventDefault();
-                        submit()
+                        submit(search);
                     }}
                 >
                     <input 
                         type="text"
                         className="input__searchrepo"
                         placeholder="repo à rechercher"
-                        value={searchRepo}
+                        value={search}
                         onChange={(event) => {
                             console.log('search', event.target.value);
-                            setSearchRepo(event.target.value)
+                            setSearch(event.target.value)
                         }}
 
                     />

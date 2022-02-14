@@ -1,11 +1,11 @@
 import React from 'react';
 
-import {Card, Icon} from 'semantic-ui-react'; 
+import {Card, Icon, Grid, Button} from 'semantic-ui-react'; 
 
 import './showRepos.css'; 
 
 
-function ShowRepos({allRepos}) {
+function ShowRepos({allRepos, loading, nextPage}) {
 
     return (
         <div style={{
@@ -30,6 +30,21 @@ function ShowRepos({allRepos}) {
                 />
             ))}
         </Card.Group>
+        {/* when we get repos the button show up */}
+        {allRepos.length > 0 && (
+            <Grid>
+                {/* to center the button */}
+                <Grid.Column textAlign="center">
+                    <Button onClick={nextPage}>
+                        {loading 
+                            ? <Icon loading name='spinner' />
+                            : <Icon name="angle down" />
+                        }
+                        Voir plus de résultats
+                    </Button>
+                </Grid.Column>
+            </Grid>
+        )}
         </div>
     )
 }
